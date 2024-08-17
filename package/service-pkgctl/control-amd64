@@ -1,11 +1,10 @@
 Package: osdp-service
-Version: 1.50-2
+Version: 2.01
 Section: custom
 Priority: optional
 Architecture: amd64
 Essential: no
 Installed-Size: 1024
 Maintainer: github@smithee.solutions
-Description: systemd service set-up for libosdp-conformance
-Depends: libosdp-conformance
+Description: systemd service set-up for osdp-exerciser
 

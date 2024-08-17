@@ -14,9 +14,6 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
-
-  Support provided by the Security Industry Association
-  http://www.securityindustry.org
 */
 
 
@@ -27,9 +24,9 @@
 #include <jansson.h>
 #endif
 
-#define OSDP_VERSION_MAJOR ( 1)
-#define OSDP_VERSION_MINOR (50)
-#define OSDP_VERSION_BUILD ( 2)
+#define OSDP_VERSION_MAJOR ( 2)
+#define OSDP_VERSION_MINOR ( 1)
+#define OSDP_VERSION_BUILD ( 0)
 
 #define OO_DIR_RUN         (1)
 #define OO_DIR_LOG         (2)

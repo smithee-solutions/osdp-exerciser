@@ -1,4 +1,4 @@
-PACKAGE_NAME=libosdp-conformance
+PACKAGE_NAME=osdp-exerciser
 
 BUILT=..
 
