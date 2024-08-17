@@ -19,6 +19,9 @@ all:	lib
 	(cd src-ui; make all; cd ..)
 	(cd src-tools; make all; cd ..)
 
+reader:	lib
+	(cd src-reader; make)
+
 lib:
 	(cd include; make all; cd ..)
 	(cd src-lib; make all)
@@ -64,6 +67,7 @@ clean:
 	(cd test; make clean; cd ..)
 	(cd doc; make clean; )
 	(cd package; make clean)
+	(cd src-reader; make clean);
 	rm -f release-osdp-conformance.tgz *.deb
 	rm -rf opt
 
