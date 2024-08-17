@@ -7,6 +7,8 @@ This is osdp-exerciser a set of OSD protocol exerciser tools.
 
 ### updates in 2.01
 
+stop delivering trace format in root of tree.  still there in doc
+and delivered etc directory.
 start labelling it as osdp-exerciser.
 
 ### updates in 2.00
