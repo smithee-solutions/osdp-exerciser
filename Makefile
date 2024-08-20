@@ -17,10 +17,6 @@
 all:	lib
 	(cd src-485; make all; cd ..)
 	(cd src-ui; make all; cd ..)
-	(cd src-tools; make all; cd ..)
-
-reader:	lib
-	(cd src-reader; make)
 
 lib:
 	(cd include; make all; cd ..)
@@ -37,7 +33,6 @@ build:	all
 	(cd src-lib; make build; cd ..)
 	(cd src-485; make build; cd ..)
 	(cd src-ui; make build; cd ..)
-	(cd src-tools; make build; cd ..)
 	cp doc/config-examples/open-osdp-params-ACU.json \
 	  opt/osdp-conformance/run/ACU/
 	cp doc/config-examples/open-osdp-params-MON.json \
@@ -50,20 +45,17 @@ build:	all
 	echo "/opt/osdp-conformance" >opt/osdp-conformance/run/PD/my-root
 	echo "/opt/osdp-conformance" >opt/osdp-conformance/run/MON/my-root
 
-service:	build
-	(cd package; make service)
-
 package:	build
+	(cd src-reader; make)
+	(cd package; make service)
+	(cd doc; make build;)
 	(cd package; make package)
 
-documentation:	service
-	(cd doc; make build;)
 clean:
 	(cd include; make clean; cd ..)
 	(cd src-lib; make clean; cd ..)
 	(cd src-485; make clean; cd ..)
 	(cd src-ui; make clean; cd ..)
-	(cd src-tools; make clean; cd ..)
 	(cd test; make clean; cd ..)
 	(cd doc; make clean; )
 	(cd package; make clean)

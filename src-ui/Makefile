@@ -17,6 +17,8 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
+OSDPBUILD=../opt/osdp-conformance
+
 # built with gcc.  note it also builds with clang.
 
 CFLAGS=-c -DOSDP_CONFORMANCE -g -I../include -Wall -Werror
@@ -39,6 +41,12 @@ TLS_CGIPROGS = start-CP-net-client start-CP-tcp-client \
 EXTRA = osdp.conf service/install-osdp-service \
   service/osdp-ACU.service service/osdp-MONITOR.service service/osdp-PD.service \
   www-data
+ACTIONS=\
+  osdp_ACK osdp_ACURXSIZE osdp_BIOMATCH osdp_BIOMATCHR osdp_BIOREAD osdp_BIOREADR osdp_BUSY osdp_BUZ osdp_CAP osdp_CCRYPT osdp_CHLNG osdp_COM osdp_COMSET osdp_CRAUTH osdp_CRAUTHR \
+  osdp_DATA osdp_DIAG osdp_FILETRANSFER osdp_FTSTAT osdp_GENAUTH osdp_GENAUTHR osdp_ID osdp_ISTAT osdp_ISTATR osdp_KEEPACTIVE osdp_KEYPAD osdp_KEYSET \
+  osdp_LED osdp_LSTAT osdp_LSTATR osdp_MFG osdp_MFGERRR osdp_MFGREP osdp_NAK osdp_OSTAT osdp_OSTATR osdp_OUT \
+  osdp_PDCAP osdp_PDID osdp_PIVDATA osdp_PIVDATAR osdp_POLL osdp_RAW osdp_RMAC_I osdp_RSTAT osdp_RSTATR osdp_SCRYPT osdp_TEXT \
+  osdp_XRD osdp_XWR
 
 PROGS = open-osdp-kick osdp-config-print
 TLS_PROGS = 
@@ -85,6 +93,9 @@ build:	all
 	cp osdp.conf www-data ../opt/osdp-conformance/etc
 	cp service/osdp*.service ../opt/osdp-conformance/etc
 	cp service/install-osdp-service ../opt/osdp-conformance/bin
+	mkdir -p ${OSDPBUILD}/actions
+	(cd actions; tar czvf /tmp/osdp-actions.tgz *;cp ${ACTIONS} ../${OSDPBUILD}/actions)
+	cp /tmp/osdp-actions.tgz ${OSDPBUILD}/etc
 
 build-tls:	${TLS_CGIPROGS} ${TLS_PAGES} ${TLS_SCRIPTS} ${TLS_PROGS} build
 	# (no TLS pages) cp ${TLS_PAGES} ../opt/osdp-conformance/www
